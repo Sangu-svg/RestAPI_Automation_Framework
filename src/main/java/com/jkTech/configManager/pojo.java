@@ -71,7 +71,7 @@ public class pojo {
     public String getBearerToken() {
         return this.token;
     }
-    
+
     public void store_Created_book_details(HashMap<String, String> bookDetails) {
         book_details.putAll(bookDetails);
     }
