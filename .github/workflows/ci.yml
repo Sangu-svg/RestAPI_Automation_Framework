@@ -28,28 +28,40 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '18'
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Run FastAPI app in background
+      - name: Install Python dependencies
         run: |
-          nohup uvicorn main:app --host 127.0.0.1 --port 8000 &
-          sleep 10
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn
 
-      - name: Health check FastAPI
+      - name: Start FastAPI server
         run: |
-          curl --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1:8000/docs
+          uvicorn main:app --host 127.0.0.1 --port 8000 &
+        working-directory: bookstore/main.py  # change to where your `main.py` lives
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+      - name: Wait for FastAPI to be ready
+        run: |
+          echo "Waiting for FastAPI server..."
+          until curl --output /dev/null --silent --head --fail http://127.0.0.1:8000; do
+            echo "Waiting for FastAPI..."
+            sleep 3
+          done
 
-      - name: Run Unit Tests with Coverage
+      - name: Run Unit Tests
         run: mvn clean test jacoco:report
 
       - name: Run Integration Tests
         run: mvn failsafe:integration-test failsafe:verify
+
+
+
