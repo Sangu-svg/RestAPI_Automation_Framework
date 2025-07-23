@@ -45,11 +45,13 @@
                 <version>0.8.10</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id> <!-- Add this ID -->
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
+                        <id>report</id> <!-- Add this ID -->
                         <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
@@ -57,6 +59,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
