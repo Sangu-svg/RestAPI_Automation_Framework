@@ -16,7 +16,7 @@ on:
           - QA
           - PROD
 env:
-  JAVA_VERSION: '17'
+  JAVA_VERSION: '18'
 
 jobs:
   api-tests:
@@ -26,11 +26,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Set up Java 18
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: '18'
 
       - name: Set up Maven
         uses: s4u/setup-maven-action@main
