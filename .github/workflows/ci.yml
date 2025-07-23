@@ -47,7 +47,7 @@ jobs:
       - name: Start FastAPI server
         run: |
           uvicorn main:app --host 127.0.0.1 --port 8000 &
-        working-directory: bookstore  # change to where your `main.py` lives
+        working-directory: src/main/resources/bookstore  # change to where your `main.py` lives
 
       - name: Wait for FastAPI to be ready
         run: |
