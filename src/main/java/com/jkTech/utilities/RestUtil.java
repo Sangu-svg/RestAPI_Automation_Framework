@@ -10,9 +10,6 @@ public class RestUtil {
 
     public static RestAssured request;
     public static Response response;
-    public static JsonPath jsonPath;
-    public static pojo loadData;
-    static int retryCount = 0;
 
     public static Response retry_Mechanism_For_Post_APICall(String baseURI, String payLoad,
                                                             String endpoint, String token) {

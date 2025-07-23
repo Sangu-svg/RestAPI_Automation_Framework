@@ -17,7 +17,6 @@ public class readData {
             fis = new FileInputStream("src/main/resources/config.properties");
             properties.load(fis);
             propertyValue = properties.getProperty(propertyName);
-            System.out.println("out put properties " + propertyValue);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

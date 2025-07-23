@@ -13,8 +13,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import net.minidev.json.JSONObject;
 import org.testng.Assert;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +39,6 @@ public class BooksStepDef {
         requestBody.put("published_year", year);
         requestBody.put("book_summary", summary);
         created_Book_Details.putAll(requestBody);
-        System.out.println(requestBody);
 
     }
 

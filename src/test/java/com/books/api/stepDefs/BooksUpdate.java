@@ -28,11 +28,6 @@ public class BooksUpdate {
     public static String bearer_Token;
     static int retryCount = 0;
     JSONObject updatedBook;
-    HashMap<String, Object> updatedBookDetails = new HashMap<String, Object>();
-
-    ArrayList<Integer> bookIds = new ArrayList<>();
-
-    // Assuming author is
 
 
     @When("I update the book {string} to name {string}, republished year to {int} and book summary to {string} for bookId {int}")
@@ -42,8 +37,6 @@ public class BooksUpdate {
         updatedBook.put("name", updateBookName);
         updatedBook.put("published_year", republished_year);
         updatedBook.put("book_summary", renamed_title);
-        //created_Book_Details.putAll(requestBody);
-        System.out.println(updatedBook);
 
         while (retryCount < 3) {
             try {
@@ -153,7 +146,6 @@ public class BooksUpdate {
         List<String> bookNames = response.jsonPath().getList("name");
         Assert.assertTrue(bookNames.size() > 0, "Book list should not be empty");
         Assert.assertTrue(!bookNames.isEmpty() == true, "response has lis tof books and no empty");
-        System.out.println("Number of books fetched " + bookNames.size());
         for (String bookName : bookNames) {
             ExtentCucumberAdapter.getCurrentStep().log(Status.INFO, "All books from get all booksAPI  : " + bookName);
         }

@@ -69,8 +69,6 @@ public class Hooks {
             } else {
                 System.out.println("Request failed after retries.");
             }
-
-            System.out.println("Bearer token already generatted and using same for all ");
         }
     }
 }
