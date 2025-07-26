@@ -19,7 +19,6 @@ import java.util.Map;
 
 public class BooksStepDef {
     public static RestUtil restUtil;
-    public static RestAssured request;
     public static Response response;
     public static JsonPath jsonPath;
     public static pojo loadData = new pojo();
